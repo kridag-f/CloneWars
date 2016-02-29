@@ -3,10 +3,12 @@ public class Main {
     public static void main(String[] args) {
         Jedi test = new Jedi();
 
-        test.creationPerso();
+        test.lvlUp();
 
         Sith test2 = new Sith();
 
-        test2.creationPerso();
+        Integer i = test2.setHp((int) (test2.getHp() * 1.5));
+        System.out.print(i);
+
     }
 }

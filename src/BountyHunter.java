@@ -3,13 +3,14 @@
  */
 public class BountyHunter extends Personnage implements Attaque{
 
-    public BountyHunter() {
+    public BountyHunter(String name) {
         setHp(100);
         setDef(350);
         setPower(100);
         setXp(0);
         setForce(0);
         setIntelligence(100);
+        setName(name);
     }
 
     public void physicalAttack(Personnage ennemy) {
@@ -23,4 +24,5 @@ public class BountyHunter extends Personnage implements Attaque{
     public void armedAttack(Personnage ennemy) {
         ennemy.setHp(getIntelligence() - ennemy.getDef());
     }
+
 }

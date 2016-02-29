@@ -3,13 +3,14 @@
  */
 public class Sith extends Personnage implements Attaque {
 
-    public Sith() {
+    public Sith(String name) {
         setHp(100);
         setDef(100);
         setPower(200);
         setForce(200);
         setXp(0);
         setIntelligence(200);
+        setName(name);
     }
 
     @Override

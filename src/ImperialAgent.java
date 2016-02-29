@@ -4,6 +4,7 @@
 public class ImperialAgent extends Personnage implements Attaque {
 
     public ImperialAgent() {
+        super(name);
         setHp(350);
         setDef(100);
         setPower(100);

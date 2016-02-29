@@ -10,6 +10,7 @@ public abstract class Personnage {
     private Integer intelligence;
     private Integer lvl;
     private Integer xp;
+    private String name;
 
     public Personnage() {
 
@@ -20,6 +21,7 @@ public abstract class Personnage {
         setLvl(1);
         setPower(null);
         setXp(null);
+        setName(null);
     }
 
     public void lvlUp() {
@@ -61,6 +63,10 @@ public abstract class Personnage {
         return xp;
     }
 
+    public String getName() {
+        return name;
+    }
+
     // SETTERS
     public void setDef(Integer def) {
         this.def = def;
@@ -90,6 +96,8 @@ public abstract class Personnage {
         this.xp = xp;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }
