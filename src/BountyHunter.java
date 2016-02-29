@@ -4,13 +4,12 @@
 public class BountyHunter extends Personnage implements Attaque{
 
     public BountyHunter() {
-
         setHp(100);
-        setDef(100);
+        setDef(350);
         setPower(100);
-        setPower(0);
         setXp(0);
-        setIntelligence(350);
+        setForce(0);
+        setIntelligence(100);
     }
 
     public void physicalAttack(Personnage ennemy) {

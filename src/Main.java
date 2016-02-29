@@ -1,6 +1,12 @@
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Jedi test = new Jedi();
+
+        test.creationPerso();
+
+        Sith test2 = new Sith();
+
+        test2.creationPerso();
     }
 }

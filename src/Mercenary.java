@@ -4,7 +4,6 @@
 public class Mercenary extends Personnage implements Attaque {
 
     public Mercenary() {
-
         setHp(100);
         setDef(350);
         setPower(100);
