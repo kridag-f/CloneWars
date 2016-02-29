@@ -1,7 +1,7 @@
 /**
  * Created by Anthony on 29/02/2016.
  */
-public abstract class Personnage implements Attaque {
+public abstract class Personnage {
 
     private Integer hp;
     private Integer def;
