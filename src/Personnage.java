@@ -13,8 +13,8 @@ public abstract class Personnage {
 
     public Personnage() {
 
-        setDef(null);
         setHp(null);
+        setDef(null);
         setForce(null);
         setIntelligence(null);
         setLvl(1);
@@ -23,7 +23,13 @@ public abstract class Personnage {
     }
 
     public void lvlUp() {
+        setHp((int) (getHp() * 1.5));
+        setDef((int) (getDef() * 1.5));
+        setForce((int) (getForce() * 1.5));
+        setIntelligence((int) (getIntelligence() * 1.5));
         setLvl(getLvl() + 1);
+        setPower((int) (getPower() * 1.5));
+        setXp(0);
     }
 
     // GETTERS
