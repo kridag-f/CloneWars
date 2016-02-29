@@ -4,10 +4,10 @@
 public class Jawa extends Personnage implements Attaque {
 
     public Jawa() {
-
         setHp(400);
         setDef(400);
         setPower(400);
+        setForce(0);
         setXp(0);
         setIntelligence(400);
     }
