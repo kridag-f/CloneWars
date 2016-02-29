@@ -8,6 +8,7 @@ public class BountyHunter extends Personnage implements Attaque{
         setHp(100);
         setDef(100);
         setPower(100);
+        setPower(0);
         setXp(0);
         setIntelligence(350);
     }

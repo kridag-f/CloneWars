@@ -26,7 +26,6 @@ public abstract class Personnage {
         setLvl(getLvl() + 1);
     }
 
-
     // GETTERS
     public Integer getDef() {
         return def;

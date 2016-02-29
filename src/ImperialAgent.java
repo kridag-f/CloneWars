@@ -8,6 +8,7 @@ public class ImperialAgent extends Personnage implements Attaque {
         setHp(350);
         setDef(100);
         setPower(100);
+        setPower(0);
         setXp(0);
         setIntelligence(100);
     }

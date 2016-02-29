@@ -8,6 +8,7 @@ public class Mercenary extends Personnage implements Attaque {
         setHp(100);
         setDef(350);
         setPower(100);
+        setPower(0);
         setXp(0);
         setIntelligence(100);
     }

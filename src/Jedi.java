@@ -8,6 +8,7 @@ public class Jedi extends Personnage implements Attaque {
         setDef(200);
         setPower(100);
         setForce(200);
+        setXp(0);
         setIntelligence(200);
     }
 
@@ -21,9 +22,8 @@ public class Jedi extends Personnage implements Attaque {
         ennemy.setHp((getForce()/10)*2);
     }
 
-
     @Override
     public void armedAttack(Personnage ennemy) {
-        ennemy.setHp(getIntelligence() - ennemy.getDef());
+        System.out.println("Désolé tu as la force tu peux pas utiliser cette technique !");
     }
 }
