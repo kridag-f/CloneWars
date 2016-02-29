@@ -4,28 +4,26 @@
 public class Jedi extends Personnage implements Attaque {
 
     public Jedi() {
-
+        setHp(100);
+        setDef(200);
+        setPower(100);
+        setForce(200);
+        setIntelligence(200);
     }
 
     @Override
     public void physicalAttack(Personnage ennemy) {
-
-    }
-
-
-    @Override
-    public void lvlUp() {
-
+        ennemy.setHp(getPower() - ennemy.getDef());
     }
 
     @Override
     public void forceAttack(Personnage ennemy) {
-
+        ennemy.setHp((getForce()/10)*2);
     }
 
 
     @Override
     public void armedAttack(Personnage ennemy) {
-
+        ennemy.setHp(getIntelligence() - ennemy.getDef());
     }
 }

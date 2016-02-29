@@ -22,6 +22,11 @@ public abstract class Personnage {
         setXp(null);
     }
 
+    public void lvlUp() {
+        setLvl(getLvl() + 1);
+    }
+
+
     // GETTERS
     public Integer getDef() {
         return def;
