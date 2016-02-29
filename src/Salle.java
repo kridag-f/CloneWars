@@ -14,7 +14,6 @@ public class Salle {
         setListEnnemis(listEnnemis);
     }
 
-
     // GETTERS
     public Integer getLvl() {
         return lvl;
