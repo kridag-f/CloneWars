@@ -80,4 +80,6 @@ public abstract class Personnage {
         this.xp = xp;
     }
 
+
+
 }
