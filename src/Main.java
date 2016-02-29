@@ -1,14 +1,21 @@
 public class Main {
 
     public static void main(String[] args) {
-        Jedi test = new Jedi();
 
-        test.lvlUp();
+        Usine test = new Usine();
 
-        Sith test2 = new Sith();
+        Clone testClone;
 
-        Integer i = test2.setHp((int) (test2.getHp() * 1.5));
-        System.out.print(i);
-
+        test.vagueEnnemi(6);
+        System.out.println(test.getListEnnemis().get(0));
+        System.out.println(test.getListEnnemis().get(1));
+        testClone = (Clone) test.getListEnnemis().get(2);
+        System.out.println(testClone.getLvl());
+        System.out.println(testClone.getHp());
+        System.out.println(testClone.getDef());
+        System.out.println(testClone.getPower());
+        System.out.println(testClone.getForce());
+        System.out.println(testClone.getIntelligence());
+        System.out.println(testClone.getXp());
     }
 }

@@ -3,14 +3,14 @@
  */
 public class Jawa extends Personnage implements Attaque {
 
-    public Jawa() {
-        super(name);
+    public Jawa(String name) {
         setHp(400);
         setDef(400);
         setPower(400);
         setForce(0);
         setXp(0);
         setIntelligence(400);
+        setName(name);
     }
 
     public void physicalAttack(Personnage ennemy) {

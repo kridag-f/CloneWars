@@ -3,14 +3,14 @@
  */
 public class ImperialAgent extends Personnage implements Attaque {
 
-    public ImperialAgent() {
-        super(name);
+    public ImperialAgent(String name) {
         setHp(350);
         setDef(100);
         setPower(100);
         setXp(0);
         setForce(0);
         setIntelligence(100);
+        setName(name);
     }
 
     public void physicalAttack(Personnage ennemy) {

@@ -1,59 +1,85 @@
+import java.util.Random;
+import java.util.Vector;
+
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Usine extends Personnage {
+public class Usine {
 
-    private Integer zone;
+    private Vector listEnnemis;
+    private Integer numClone;
+    private Integer numSoldat;
+    private Integer numDroid;
 
     public Usine() {
-
-    }
-    public Usine(Integer zone) {
-
-        setZone(zone);
-    }
-
-    public void Clone() {
-        setHp(100);
-        setDef(100);
-        setPower(100);
-        setXp(0);
-        setForce(0);
-        setIntelligence(100);
-        setName("Clone");
+        setListEnnemis(new Vector());
+        setNumClone(2);
+        setNumSoldat(1);
+        setNumDroid(0);
     }
 
-    public void Soldat() {
-        setHp(100);
-        setDef(150);
-        setPower(125);
-        setXp(0);
-        setForce(0);
-        setIntelligence(125);
-        setName("Soldat");
+    public void vagueEnnemi(Integer numZone) {
+
+        Integer i;
+
+        for (i = 0; i < (getNumClone() + numZone); i++) {
+            getListEnnemis().add(lvlEnnemi(numZone, new Clone()));
+        }
+
+        for (i = 0; i < (getNumSoldat() + numZone); i++) {
+            getListEnnemis().add(lvlEnnemi(numZone, new Soldat()));
+        }
+
+        for (i = 0; i < (getNumDroid() + numZone); i++) {
+            getListEnnemis().add(lvlEnnemi(numZone, new Droid()));
+        }
     }
 
-    public void Droid() {
-        setHp(50);
-        setDef(100);
-        setPower(25);
-        setXp(0);
-        setForce(0);
-        setIntelligence(200);
-        setName("Droid");
+    public Personnage lvlEnnemi(Integer numZone, Personnage perso){
+
+        Random rLvl = new Random();
+        Integer lvlRandom;
+
+        lvlRandom = numZone + rLvl.nextInt((numZone + 3) - numZone);
+        perso.modifNiveau(lvlRandom);
+
+        return perso;
     }
 
-    public void creationEnnemi(Personnage ennemy) {
-
+    // GETTEURS
+    public Vector getListEnnemis() {
+        return listEnnemis;
     }
 
-    // GETTERS
-    public Integer getZone() {
-        return zone;
+    public Integer getNumClone() {
+        return numClone;
     }
 
-    // SETTERS
-    public void setZone(Integer zone) {
-        this.zone = zone;
+    public Integer getNumDroid() {
+        return numDroid;
     }
+
+    public Integer getNumSoldat() {
+        return numSoldat;
+    }
+
+
+    // SETTEURS
+    public void setListEnnemis(Vector listEnnemis) {
+        this.listEnnemis = listEnnemis;
+    }
+
+    public void setNumClone(Integer numClone) {
+        this.numClone = numClone;
+    }
+
+    public void setNumDroid(Integer numDroid) {
+        this.numDroid = numDroid;
+    }
+
+    public void setNumSoldat(Integer numSoldat) {
+        this.numSoldat = numSoldat;
+    }
+
 }
+

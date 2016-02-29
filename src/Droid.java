@@ -1,11 +1,16 @@
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Droid extends Usine implements Attaque {
+public class Droid extends Personnage implements Attaque {
 
     public Droid() {
-        super();
-        Droid();
+        setHp(50);
+        setDef(100);
+        setPower(25);
+        setXp(0);
+        setForce(0);
+        setIntelligence(200);
+        setName("Droid");
     }
 
     @Override

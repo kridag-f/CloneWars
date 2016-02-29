@@ -34,6 +34,15 @@ public abstract class Personnage {
         setXp(0);
     }
 
+    public void modifNiveau(Integer lvl) {
+        Integer i;
+
+        for (i = 0; i < lvl; i++){
+            lvlUp();
+        }
+    }
+
+
     // GETTERS
     public Integer getDef() {
         return def;

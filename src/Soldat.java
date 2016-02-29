@@ -1,11 +1,16 @@
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Soldat extends Usine implements Attaque {
+public class Soldat extends Personnage implements Attaque {
 
     public Soldat() {
-        super();
-        Soldat();
+        setHp(100);
+        setDef(150);
+        setPower(125);
+        setXp(0);
+        setForce(0);
+        setIntelligence(125);
+        setName("Soldat");
     }
 
     @Override

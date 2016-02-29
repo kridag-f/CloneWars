@@ -1,11 +1,18 @@
+import java.util.Vector;
+
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Clone extends Usine implements Attaque {
+public class Clone extends Personnage implements Attaque {
 
     public Clone() {
-        super();
-        Clone();
+        setHp(100);
+        setDef(100);
+        setPower(100);
+        setXp(0);
+        setForce(0);
+        setIntelligence(100);
+        setName("Clone");
     }
 
     @Override
