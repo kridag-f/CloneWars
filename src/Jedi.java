@@ -4,12 +4,19 @@
 public class Jedi extends Personnage implements Attaque {
 
     public Jedi() {
-        setHp(100);
-        setDef(200);
-        setPower(100);
-        setForce(200);
-        setXp(0);
-        setIntelligence(200);
+        if (getInstance() == null) {
+            setHp(100);
+            setDef(200);
+            setPower(100);
+            setXp(0);
+            setForce(200);
+            setIntelligence(200);
+            setInstance(new Jedi());
+        } else {
+            setInstance(null);
+            System.exit(0);
+        }
+
     }
 
     @Override
@@ -20,6 +27,12 @@ public class Jedi extends Personnage implements Attaque {
     @Override
     public void forceAttack(Personnage ennemy) {
         ennemy.setHp((getForce()/10)*2);
+    }
+
+
+    public void creationPerso() {
+        System.out.println("Tu as créé un JEDI");
+
     }
 
     @Override

@@ -1,18 +1,18 @@
 /**
  * Created by Anthony on 29/02/2016.
  */
-public abstract class Personnage {
+public class Personnage {
 
-    private Integer hp;
-    private Integer def;
-    private Integer power;
-    private Integer force;
-    private Integer intelligence;
-    private Integer lvl;
-    private Integer xp;
+    private static Integer hp;
+    private static Integer def;
+    private static Integer power;
+    private static Integer force;
+    private static Integer intelligence;
+    private static Integer lvl;
+    private static Integer xp;
+    private static Personnage instance = null;
 
     public Personnage() {
-
         setDef(null);
         setHp(null);
         setForce(null);
@@ -20,6 +20,7 @@ public abstract class Personnage {
         setLvl(1);
         setPower(null);
         setXp(null);
+        setInstance(null);
     }
 
     public void lvlUp() {
@@ -55,6 +56,12 @@ public abstract class Personnage {
         return xp;
     }
 
+    public static Personnage getInstance() {
+        if (instance == null) instance = new Personnage();
+            return instance;
+    }
+
+
     // SETTERS
     public void setDef(Integer def) {
         this.def = def;
@@ -85,5 +92,7 @@ public abstract class Personnage {
     }
 
 
-
+    public static void setInstance(Personnage instance) {
+        Personnage.instance = instance;
+    }
 }
