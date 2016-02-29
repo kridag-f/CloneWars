@@ -22,13 +22,6 @@ public abstract class Personnage {
         setXp(null);
     }
 
-
-    // ATTAQUE
-    public abstract void physicalAttack(Personnage ennemy);
-    public abstract void lvlUp();
-    public abstract void forceAttack(Personnage ennemy);
-    public abstract void armedAttack(Personnage ennemy);
-
     // GETTERS
     public Integer getDef() {
         return def;

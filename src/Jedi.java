@@ -1,7 +1,7 @@
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Jedi extends Personnage {
+public class Jedi extends Personnage implements Attaque {
 
     public Jedi() {
 
