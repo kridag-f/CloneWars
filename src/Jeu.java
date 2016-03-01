@@ -1,10 +1,7 @@
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by Anthony on 29/02/2016.
@@ -31,13 +28,11 @@ public class Jeu {
     public void start() {
 
         menuStart(true);
-        try {
-            Integer choiceSafe = getEntreStd().nextInt();
-            setChoixJoueur(choiceSafe);
-        } catch (Exception e) {
-            //System.out.println("Veuillez entrer un chiffre entre 1 et 6 !");
+
+        while (getChoixJoueur() == null){
             menuStart(false);
         }
+
         tabChoix();
 
         while (!getGameOver()) {
@@ -61,6 +56,15 @@ public class Jeu {
         System.out.println("Tapez 5 pour un Mercenary");
         System.out.println("Tapez 6 pour un Jawa");
         System.out.print("Votre choix : ");
+
+        try {
+            Integer choixFin = getEntreStd().nextInt();
+            setChoixJoueur(choixFin);
+        } catch (InputMismatchException e) {
+            System.out.println("\nEntrez un nombre entre un 1 et 6\n");
+            getEntreStd().next();
+        }
+
 
     }
 
