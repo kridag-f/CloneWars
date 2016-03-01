@@ -1,3 +1,6 @@
+import java.util.Hashtable;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -6,16 +9,53 @@ public class Main {
 
         Clone testClone;
 
-        test.vagueEnnemi(6);
-        System.out.println(test.getListEnnemis().get(0));
-        System.out.println(test.getListEnnemis().get(1));
+        test.vagueEnnemi(1);
         testClone = (Clone) test.getListEnnemis().get(2);
         System.out.println(testClone.getLvl());
         System.out.println(testClone.getHp());
-        System.out.println(testClone.getDef());
-        System.out.println(testClone.getPower());
-        System.out.println(testClone.getForce());
-        System.out.println(testClone.getIntelligence());
-        System.out.println(testClone.getXp());
+
+
+
+        Scanner sc = new Scanner(System.in);
+
+        Personnage perso = null;
+
+        System.out.print
+                ("Donnez un nom à votre personnage : ");
+        String name = sc.nextLine();
+
+
+
+
+        System.out.println("Tapez 1 pour un Jedi : ");
+        System.out.println("Tapez 2 pour un Sith : ");
+        System.out.println("Tapez 3 pour un BountyHunters : ");
+        System.out.println("Tapez 4 pour un ImperialAgent : ");
+        System.out.println("Tapez 5 pour un Mercenary : ");
+        System.out.println("Tapez 6 pour un Jawa : ");
+        System.out.print("Votre choix : ");
+        Integer choix = sc.nextInt();
+
+
+        Hashtable<Integer,Personnage> h = new Hashtable<Integer,Personnage>();
+        h.put(1 , new Jedi(name));
+        h.put(2, new Sith(name));
+        h.put(3, new BountyHunter(name));
+        h.put(4, new ImperialAgent(name));
+        h.put(5, new Mercenary(name));
+        h.put(6, new Jawa(name));
+
+
+        perso = h.get(choix);
+
+
+        perso.forceAttack(testClone);
+
+        System.out.println(testClone.getHp());
+
+
     }
+
+
+
 }

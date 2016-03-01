@@ -109,4 +109,10 @@ public abstract class Personnage {
         this.name = name;
     }
 
+    // ABSTRACT METHODS
+
+    public abstract void physicalAttack(Personnage ennemy);
+    public abstract void forceAttack(Personnage ennemy);
+    public abstract void armedAttack(Personnage ennemy);
+
 }

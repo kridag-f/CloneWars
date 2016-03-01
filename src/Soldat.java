@@ -1,7 +1,7 @@
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Soldat extends Personnage implements Attaque {
+public class Soldat extends Personnage {
 
     public Soldat() {
         setHp(100);
@@ -15,16 +15,22 @@ public class Soldat extends Personnage implements Attaque {
 
     @Override
     public void physicalAttack(Personnage ennemy) {
-        ennemy.setHp(getPower() - ennemy.getDef());
+        Integer pointDegat = getPower() - ennemy.getDef();
+        if (pointDegat < 0) pointDegat = 0;
+        ennemy.setHp(ennemy.getHp() - pointDegat);
+        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
     }
 
     @Override
     public void forceAttack(Personnage ennemy) {
-        System.out.println("Désolé tu n'as pas la force tu peux pas utiliser cette technique !");
+        System.out.println("Jeune Soldat tu ne possèdes pas la Force");
     }
 
     @Override
     public void armedAttack(Personnage ennemy) {
-        ennemy.setHp(getIntelligence() - ennemy.getDef());
+        Integer pointDegat = getIntelligence() - ennemy.getDef();
+        if (pointDegat < 0) pointDegat = 0;
+        ennemy.setHp(ennemy.getHp() - pointDegat);
+        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
     }
 }

@@ -1,7 +1,7 @@
 /**
  * Created by Faouzi on 29/02/2016.
  */
-public class Sith extends Personnage implements Attaque {
+public class Sith extends Personnage {
 
     public Sith(String name) {
         setHp(100);
@@ -15,16 +15,22 @@ public class Sith extends Personnage implements Attaque {
 
     @Override
     public void physicalAttack(Personnage ennemy) {
-        ennemy.setHp(getPower() - ennemy.getDef());
+        Integer pointDegat = getPower() - ennemy.getDef();
+        if (pointDegat < 0) pointDegat = 0;
+        ennemy.setHp(ennemy.getHp() - pointDegat);
+        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
     }
 
     @Override
     public void forceAttack(Personnage ennemy) {
-        ennemy.setHp((getForce()/10)*2);
+        Integer pointDegat = (getForce()/10)*4;
+        if (pointDegat < 0) pointDegat = 0;
+        ennemy.setHp(ennemy.getHp() - pointDegat);
+        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
     }
 
     @Override
     public void armedAttack(Personnage ennemy) {
-        System.out.println("Désolé tu as la force tu peux pas utiliser cette technique !");
+        System.out.println("Jeune Sith tu possèdes la Force !");
     }
 }

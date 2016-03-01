@@ -40,7 +40,7 @@ public class Usine {
         Random rLvl = new Random();
         Integer lvlRandom;
 
-        lvlRandom = numZone + rLvl.nextInt((numZone + 3) - numZone);
+        lvlRandom = (numZone - 1) + rLvl.nextInt((numZone + 2) - (numZone - 1));
         perso.modifNiveau(lvlRandom);
 
         return perso;
