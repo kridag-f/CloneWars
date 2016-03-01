@@ -11,7 +11,11 @@ public class Usine {
     private Integer numSoldat;
     private Integer numDroid;
 
-    public Usine() {
+    private static Usine instance = null;
+
+
+
+    private Usine() {
         setListEnnemis(new Vector());
         setNumClone(2);
         setNumSoldat(1);
@@ -63,6 +67,11 @@ public class Usine {
         return numSoldat;
     }
 
+    public static Usine getInstance() {
+        if (instance == null) instance = new Usine();
+        else System.out.println("Vous avez déja créé une usine");
+        return instance;
+    }
 
     // SETTEURS
     public void setListEnnemis(Vector listEnnemis) {
