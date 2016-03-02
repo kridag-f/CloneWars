@@ -10,6 +10,7 @@ public class Usine {
     private Integer numClone;
     private Integer numSoldat;
     private Integer numDroid;
+    private Integer numZone;
 
     private static Usine instance = null;
 
@@ -26,16 +27,25 @@ public class Usine {
 
         Integer i;
 
-        for (i = 0; i < (getNumClone() + numZone); i++) {
-            getListEnnemis().add(lvlEnnemi(numZone, new Clone()));
+        setNumZone(numZone);
+
+        Integer nbrCreerClone = getNumClone() + getNumZone();
+        Integer nbrCreerSoldat = getNumSoldat() + getNumZone();
+        Integer nbrCreerDroid = getNumDroid() + getNumZone();
+
+        for (i = 0; i < (nbrCreerClone); i++) {
+            getListEnnemis().add(lvlEnnemi(getNumZone(), new Clone()));
+            setNumClone(nbrCreerClone);
         }
 
-        for (i = 0; i < (getNumSoldat() + numZone); i++) {
-            getListEnnemis().add(lvlEnnemi(numZone, new Soldat()));
+        for (i = 0; i < (nbrCreerSoldat); i++) {
+            getListEnnemis().add(lvlEnnemi(getNumZone(), new Soldat()));
+            setNumSoldat(nbrCreerSoldat);
         }
 
-        for (i = 0; i < (getNumDroid() + numZone); i++) {
-            getListEnnemis().add(lvlEnnemi(numZone, new Droid()));
+        for (i = 0; i < (nbrCreerDroid); i++) {
+            getListEnnemis().add(lvlEnnemi(getNumZone(), new Droid()));
+            setNumDroid(nbrCreerDroid);
         }
     }
 
@@ -75,6 +85,9 @@ public class Usine {
         return numSoldat;
     }
 
+    public Integer getNumZone() {
+        return numZone;
+    }
 
     public static Usine getInstance() {
         if (instance == null) instance = new Usine();
@@ -99,5 +112,8 @@ public class Usine {
         this.numSoldat = numSoldat;
     }
 
+    public void setNumZone(Integer numZone) {
+        this.numZone = numZone;
+    }
 }
 

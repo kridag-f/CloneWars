@@ -37,15 +37,29 @@ public class Jeu {
 
         leJoueur = (Personnage) getTabChoixClasse().get(getChoixJoueur());
 
+        Salle room = new Salle();
+
         Usine factory = null;
-        
-        factory.getInstance();
+
+        Usine usine = factory.getInstance();
 
         while (!getGameOver()) {
 
             getStat();
 
-            //leJoueur.forceAttack();
+
+            room.creationSalle(usine);
+
+            System.out.println("");
+
+
+            while (usine.getListEnnemis().isEmpty()) {
+                room.setLvl(room.getLvl() + 1);
+                usine.vagueEnnemi(room.getLvl());
+                room.setListEnnemis(usine.getListEnnemis());
+                System.out.println("Bienvenue dans la zone " + room.getLvl());
+                break;
+            }
 
             setGameOver(true);
         }
