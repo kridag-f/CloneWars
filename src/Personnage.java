@@ -31,7 +31,6 @@ public abstract class Personnage {
         setIntelligence((int) (getIntelligence() * 1.5));
         setLvl(getLvl() + 1);
         setPower((int) (getPower() * 1.5));
-        setXp(0);
     }
 
     public void modifNiveau(Integer lvl) {

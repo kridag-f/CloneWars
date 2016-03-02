@@ -5,7 +5,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Usine test = new Usine();
+
+
+        Jeu game = new Jeu();
+        game.start();
+
+
+        /*Usine test = null;
+
+        test = test.getInstance();
+
 
         Clone testClone;
 
@@ -20,8 +29,7 @@ public class Main {
 
         Personnage perso = null;
 
-        System.out.print
-                ("Donnez un nom à votre personnage : ");
+        System.out.print("Donnez un nom à votre personnage : ");
         String name = sc.nextLine();
 
 
@@ -48,11 +56,7 @@ public class Main {
 
         perso = h.get(choix);
 
-
-        perso.forceAttack(testClone);
-
-        System.out.println(testClone.getHp());
-
+        System.out.println(testClone.getHp());*/
 
     }
 

@@ -50,6 +50,14 @@ public class Usine {
         return perso;
     }
 
+    public void experience(Personnage hero, Personnage ennemy) {
+        hero.setXp(hero.getXp() + (50 * ennemy.getLvl()));
+        if (hero.getXp() >= (hero.getLvl() * 112)) {
+            hero.setXp(hero.getXp() - (hero.getLvl() * 112));
+            hero.lvlUp();
+        }
+    }
+
     // GETTEURS
     public Vector getListEnnemis() {
         return listEnnemis;
@@ -66,6 +74,7 @@ public class Usine {
     public Integer getNumSoldat() {
         return numSoldat;
     }
+
 
     public static Usine getInstance() {
         if (instance == null) instance = new Usine();

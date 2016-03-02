@@ -12,7 +12,7 @@ public class Jeu {
     private Boolean gameOver;
     private String nomJoueur;
     private Integer choixJoueur;
-    private Hashtable tabChoixClasse;
+    private Hashtable<Integer, Personnage> tabChoixClasse;
     private Personnage leJoueur;
 
     public Jeu() {
@@ -35,11 +35,32 @@ public class Jeu {
 
         tabChoix();
 
+        leJoueur = (Personnage) getTabChoixClasse().get(getChoixJoueur());
+
+        Usine factory = null;
+        
+        factory.getInstance();
+
         while (!getGameOver()) {
-            System.out.println("Le jeu peut commencer '" + getNomJoueur() + "' ! voici les stats de votre ");
+
+            getStat();
+
+            //leJoueur.forceAttack();
 
             setGameOver(true);
         }
+    }
+
+    public void getStat() {
+
+        System.out.println("Le jeu peut commencer '" + getNomJoueur() + "' ! Voici les stats de votre " + leJoueur.getClass().getName() + " :");
+        System.out.println("Level : " + leJoueur.getLvl());
+        System.out.println("PV : " + leJoueur.getHp());
+        System.out.println("Défense : " + leJoueur.getDef());
+        System.out.println("Puissance : " + leJoueur.getPower());
+        System.out.println("La Force : " + leJoueur.getForce());
+        System.out.println("Intelligence : " + leJoueur.getIntelligence());
+        System.out.println("XP : " + leJoueur.getXp());
     }
 
     public void menuStart(Boolean first) {
