@@ -1,3 +1,10 @@
+import com.sun.tools.classfile.Annotation;
+
+import java.lang.invoke.MethodHandle;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Hashtable;
+
 /**
  * Created by Anthony on 29/02/2016.
  */
@@ -39,6 +46,13 @@ public abstract class Personnage {
         for (i = 0; i < lvl; i++){
             lvlUp();
         }
+    }
+
+    public void choixAttaque(Integer choix, Personnage perso, Personnage ennemy) {
+
+        if (choix == 1) { perso.physicalAttack(ennemy); }
+        else if (choix == 2) { perso.forceAttack(ennemy); }
+        else if (choix == 3) { perso.armedAttack(ennemy); }
     }
 
 

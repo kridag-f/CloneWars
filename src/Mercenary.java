@@ -14,7 +14,7 @@ public class Mercenary extends Personnage {
     }
 
     public void physicalAttack(Personnage ennemy) {
-        Integer pointDegat = getPower() - ennemy.getDef();
+        Integer pointDegat = getPower() - (ennemy.getDef() / 2);
         if (pointDegat < 0) pointDegat = 0;
         ennemy.setHp(ennemy.getHp() - pointDegat);
         System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
@@ -25,7 +25,7 @@ public class Mercenary extends Personnage {
     }
 
     public void armedAttack(Personnage ennemy) {
-        Integer pointDegat = getIntelligence() - ennemy.getDef();
+        Integer pointDegat = getIntelligence() - (ennemy.getDef() / 2);
         if (pointDegat < 0) pointDegat = 0;
         ennemy.setHp(ennemy.getHp() - pointDegat);
         System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");

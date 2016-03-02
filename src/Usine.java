@@ -1,6 +1,5 @@
-import java.util.Hashtable;
-import java.util.Random;
-import java.util.Vector;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * Created by Faouzi on 29/02/2016.
@@ -21,7 +20,24 @@ public class Usine {
         setNumDroid(0);
     }
 
-    public Personnage unEnnemi(Integer choixEnnemi) { return (Personnage) getListEnnemis().get(choixEnnemi).firstElement(); }
+    public Personnage unEnnemi(Integer choixEnnemi) {
+
+        Personnage persoReturn = null;
+        String tabChoixEnnemi[] = new String[4];
+
+        tabChoixEnnemi[1] = "Clone";
+        tabChoixEnnemi[2] = "Soldat";
+        tabChoixEnnemi[3] = "Droid";
+
+            persoReturn = (Personnage) getListEnnemis().get(choixEnnemi).firstElement();
+
+            //System.out.println("Vous avez éliminez tous les " + tabChoixEnnemi[choixEnnemi] + ", Champion !");
+
+        if (persoReturn == null) System.out.println("Vous avez éliminez tous les " + tabChoixEnnemi[choixEnnemi] + ", Champion !");
+        System.out.println(getListEnnemis());
+
+        return persoReturn;
+    }
 
     public void vagueEnnemi(Integer numZone) {
 
@@ -47,7 +63,7 @@ public class Usine {
         for (i = 0; i < (nbrCreerDroid); i++) { chqEnnemi.add(lvlEnnemi(getNumZone(), new Droid())); }
         getListEnnemis().put(3, chqEnnemi);
         setNumDroid(nbrCreerDroid);
-        System.out.println(chqEnnemi);
+
 
     }
 
@@ -68,6 +84,10 @@ public class Usine {
             hero.setXp(hero.getXp() - (hero.getLvl() * 112));
             hero.lvlUp();
         }
+    }
+
+    public void destructionEnnemie(Personnage ennemy, Integer choixEnnemy) {
+        getListEnnemis().get(choixEnnemy).remove(ennemy);
     }
 
     // GETTEURS
