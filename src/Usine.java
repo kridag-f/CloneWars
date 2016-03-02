@@ -21,12 +21,7 @@ public class Usine {
         setNumDroid(0);
     }
 
-    public Personnage unEnnemi(Integer choixEnnemi) {
-
-        Personnage ennemiReturn = (Personnage) getListEnnemis().get(choixEnnemi).firstElement();
-        getListEnnemis().get(choixEnnemi).remove(ennemiReturn);
-        return ennemiReturn;
-    }
+    public Personnage unEnnemi(Integer choixEnnemi) { return (Personnage) getListEnnemis().get(choixEnnemi).firstElement(); }
 
     public void vagueEnnemi(Integer numZone) {
 
