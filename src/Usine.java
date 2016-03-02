@@ -1,3 +1,4 @@
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.Vector;
 
@@ -6,26 +7,31 @@ import java.util.Vector;
  */
 public class Usine {
 
-    private Vector listEnnemis;
+    private Hashtable<Integer, Vector> listEnnemis;
     private Integer numClone;
     private Integer numSoldat;
     private Integer numDroid;
     private Integer numZone;
-
     private static Usine instance = null;
 
-
-
     private Usine() {
-        setListEnnemis(new Vector());
+        setListEnnemis(new Hashtable<Integer, Vector>());
         setNumClone(2);
         setNumSoldat(1);
         setNumDroid(0);
     }
 
+    public Personnage unEnnemi(Integer choixEnnemi) {
+
+        Personnage ennemiReturn = (Personnage) getListEnnemis().get(choixEnnemi).firstElement();
+        getListEnnemis().get(choixEnnemi).remove(ennemiReturn);
+        return ennemiReturn;
+    }
+
     public void vagueEnnemi(Integer numZone) {
 
         Integer i;
+        Vector chqEnnemi = new Vector();
 
         setNumZone(numZone);
 
@@ -33,20 +39,21 @@ public class Usine {
         Integer nbrCreerSoldat = getNumSoldat() + getNumZone();
         Integer nbrCreerDroid = getNumDroid() + getNumZone();
 
-        for (i = 0; i < (nbrCreerClone); i++) {
-            getListEnnemis().add(lvlEnnemi(getNumZone(), new Clone()));
-            setNumClone(nbrCreerClone);
-        }
+        for (i = 0; i < (nbrCreerClone); i++) { chqEnnemi.add(lvlEnnemi(getNumZone(), new Clone())); }
+        getListEnnemis().put(1, chqEnnemi);
+        chqEnnemi = new Vector();
+        setNumClone(nbrCreerClone);
 
-        for (i = 0; i < (nbrCreerSoldat); i++) {
-            getListEnnemis().add(lvlEnnemi(getNumZone(), new Soldat()));
-            setNumSoldat(nbrCreerSoldat);
-        }
+        for (i = 0; i < (nbrCreerSoldat); i++) { chqEnnemi.add(lvlEnnemi(getNumZone(), new Soldat())); }
+        getListEnnemis().put(2, chqEnnemi);
+        chqEnnemi = new Vector();
+        setNumSoldat(nbrCreerSoldat);
 
-        for (i = 0; i < (nbrCreerDroid); i++) {
-            getListEnnemis().add(lvlEnnemi(getNumZone(), new Droid()));
-            setNumDroid(nbrCreerDroid);
-        }
+        for (i = 0; i < (nbrCreerDroid); i++) { chqEnnemi.add(lvlEnnemi(getNumZone(), new Droid())); }
+        getListEnnemis().put(3, chqEnnemi);
+        setNumDroid(nbrCreerDroid);
+        System.out.println(chqEnnemi);
+
     }
 
     public Personnage lvlEnnemi(Integer numZone, Personnage perso){
@@ -69,7 +76,7 @@ public class Usine {
     }
 
     // GETTEURS
-    public Vector getListEnnemis() {
+    public Hashtable<Integer, Vector> getListEnnemis() {
         return listEnnemis;
     }
 
@@ -96,7 +103,7 @@ public class Usine {
     }
 
     // SETTEURS
-    public void setListEnnemis(Vector listEnnemis) {
+    public void setListEnnemis(Hashtable listEnnemis) {
         this.listEnnemis = listEnnemis;
     }
 

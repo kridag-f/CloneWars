@@ -47,19 +47,25 @@ public class Jeu {
 
             getStat();
 
-
             room.creationSalle(usine);
 
             System.out.println("");
 
+            Personnage ennemiR = usine.unEnnemi(1);
 
-            while (usine.getListEnnemis().isEmpty()) {
-                room.setLvl(room.getLvl() + 1);
-                usine.vagueEnnemi(room.getLvl());
-                room.setListEnnemis(usine.getListEnnemis());
-                System.out.println("Bienvenue dans la zone " + room.getLvl());
-                break;
-            }
+            System.out.println(ennemiR.getHp());
+            leJoueur.forceAttack(ennemiR);
+            System.out.println(ennemiR.getHp());
+
+            System.out.println(usine.getListEnnemis());
+
+            //while (usine.getListEnnemis().isEmpty()) {
+            //    room.setLvl(room.getLvl() + 1);
+            //    usine.vagueEnnemi(room.getLvl());
+            //    room.setListEnnemis(usine.getListEnnemis());
+            //    System.out.println("Bienvenue dans la zone " + room.getLvl());
+            //    break;
+            //}
 
             setGameOver(true);
         }

@@ -1,3 +1,4 @@
+import java.util.Hashtable;
 import java.util.Vector;
 
 /**
@@ -6,12 +7,12 @@ import java.util.Vector;
 public class Salle {
 
     private Integer lvl;
-    private Vector listEnnemis;
+    private Hashtable listEnnemis;
 
     public Salle() {
 
         setLvl(1);
-        setListEnnemis(new Vector());
+        setListEnnemis(null);
     }
 
     public void creationSalle(Usine usine) {
@@ -28,7 +29,7 @@ public class Salle {
         return lvl;
     }
 
-    public Vector getListEnnemis() {
+    public Hashtable getListEnnemis() {
         return listEnnemis;
     }
 
@@ -37,7 +38,7 @@ public class Salle {
         this.lvl = lvl;
     }
 
-    public void setListEnnemis(Vector listEnnemis) {
+    public void setListEnnemis(Hashtable listEnnemis) {
         this.listEnnemis = listEnnemis;
     }
 }
