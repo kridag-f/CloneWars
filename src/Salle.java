@@ -1,5 +1,3 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.Vector;
 
 /**
@@ -9,7 +7,6 @@ public class Salle {
 
     private Integer lvl;
     private Vector listEnnemis;
-    private Usine factory;
 
     public Salle() {
 
