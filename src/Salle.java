@@ -20,7 +20,7 @@ public class Salle {
         usine.vagueEnnemi(getLvl());
         setListEnnemis(usine.getListEnnemis());
         System.out.println("Bienvenue dans la zone " + getLvl());
-        System.out.println(usine.getNumClone() + " Clone, " + usine.getNumSoldat() + " Soldat et " + usine.getNumDroid() + " Droid sont présent dans cette zone");
+        System.out.println(usine.getNumClone() + " Clone, " + usine.getNumSoldat() + " Soldat et " + usine.getNumDroid() + " Droid sont présent dans cette zone\n");
     }
 
 

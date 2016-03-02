@@ -49,8 +49,6 @@ public class Jeu {
 
             room.creationSalle(usine);
 
-            System.out.println("");
-
             Personnage ennemiR = usine.unEnnemi(1);
 
             System.out.println(ennemiR.getHp());
