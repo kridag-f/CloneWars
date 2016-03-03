@@ -16,7 +16,7 @@ public class Salle {
     }
 
     public void creationSalle(Usine usine) {
-        System.out.println("\nUne salle a été créée !");
+        //System.out.println("\nUne salle a été créée !");
         usine.vagueEnnemi(getLvl());
         setListEnnemis(usine.getListEnnemis());
         System.out.println("Bienvenue dans la zone " + getLvl());
