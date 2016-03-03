@@ -79,7 +79,6 @@ public class Jeu {
     }
 
     public void initJeu() {
-
         menuStart();
         tabChoix();
         setLeJoueur((Personnage) getTabChoixClasse().get(getChoixJoueur()));
