@@ -169,17 +169,7 @@ public class Jeu {
         } while (getRecommencer() < 0 || getRecommencer() > 1);
 
         if (getRecommencer() == 1) {
-            setEntreStd(new Scanner(System.in));
-            setGameOver(false);
-            setNomJoueur(null);
-            setChoixEnnemi(0);
-            setChoixAttaque(0);
-            setRecommencer(0);
-            setChoixJoueur(null);
-            setTabChoixClasse(new Hashtable<Integer, Personnage>());
-            setLeJoueur(null);
-            usine = null;
-            room = null;
+            resetJeu();
             start();
         } else {
             setGameOver(true);
@@ -194,6 +184,20 @@ public class Jeu {
             room.setListEnnemis(usine.getListEnnemis());
             System.out.println("Bienvenue dans la zone " + room.getLvl());
         }
+    }
+
+    public void resetJeu() {
+        setEntreStd(new Scanner(System.in));
+        setGameOver(false);
+        setNomJoueur(null);
+        setChoixEnnemi(0);
+        setChoixAttaque(0);
+        setRecommencer(0);
+        setChoixJoueur(null);
+        setTabChoixClasse(new Hashtable<Integer, Personnage>());
+        setLeJoueur(null);
+        setUsine(null);
+        setRoom(null);
     }
 
     public void quitter() {
