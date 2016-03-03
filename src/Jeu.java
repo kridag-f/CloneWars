@@ -159,7 +159,6 @@ public class Jeu {
                             setChoixJoueur(null);
                             setTabChoixClasse(new Hashtable<Integer, Personnage>());
                             setLeJoueur(null);
-                            factory = null;
                             usine = null;
                             room = null;
                             start();
