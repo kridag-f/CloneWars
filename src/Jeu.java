@@ -69,7 +69,7 @@ public class Jeu {
                     }
 
                     if (leJoueur.getHp() <= 0) {
-                        persoGameOver(ennemie);
+                        persoGameOver(leJoueur);
                     }
                 }
                 usine.destructionEnnemie(getLeJoueur(), ennemie, getChoixEnnemi());
@@ -196,6 +196,9 @@ public class Jeu {
         setChoixJoueur(null);
         setTabChoixClasse(new Hashtable<Integer, Personnage>());
         setLeJoueur(null);
+        usine.setNumClone(2);
+        usine.setNumSoldat(1);
+        usine.setNumDroid(0);
         setUsine(null);
         setRoom(null);
     }
