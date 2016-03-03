@@ -1,3 +1,5 @@
+import jdk.internal.cmm.SystemResourcePressureImpl;
+
 import java.io.FileDescriptor;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -16,6 +18,7 @@ public class Jeu {
     private Integer choixAttaque;
     private Hashtable<Integer, Personnage> tabChoixClasse;
     private Personnage leJoueur;
+    private Integer voirStats;
 
     public Jeu() {
 
@@ -24,6 +27,7 @@ public class Jeu {
         setNomJoueur(null);
         setChoixEnnemi(0);
         setChoixAttaque(0);
+        setVoirStats(0);
         setChoixJoueur(null);
         setTabChoixClasse(new Hashtable<Integer, Personnage>());
         setLeJoueur(null);
@@ -54,78 +58,93 @@ public class Jeu {
         room.creationSalle(usine);
 
         getStat(getLeJoueur());
-        System.out.println("Le jeu peut commencer '" + getNomJoueur() + "' ! ");
+        System.out.println("Le jeu peut commencer '" + getNomJoueur() + "' ! \n");
 
         while (!getGameOver()) {
 
             do {
-                if (checkNumber) System.out.println("\nEntrez un nombre entre un 1 et 3\n");
+                if (checkNumber) System.out.println("\nEntrez un nombre entre un 1 et 4\n");
                 System.out.println("1 : Attaquer Clone");
                 System.out.println("2 : Attaquer Soldat");
                 System.out.println("3 : Attaquer Droid");
+                System.out.println("4 : Fuir");
                 System.out.print("Votre choix : ");
                 try {
                     choixEnnemyAttaquer = getEntreStd().nextInt();
                     setChoixEnnemi(choixEnnemyAttaquer);
                     checkNumber = true;
                 } catch (InputMismatchException e) {
-                    System.out.println("\nEntrez un nombre entre un 1 et 3\n");
+                    System.out.println("\nEntrez un nombre entre un 1 et 4\n");
                     getEntreStd().next();
                     checkNumber = false;
                 }
+                if (getChoixEnnemi() == 4) quitter();
 
             } while (getChoixEnnemi() < 1 || getChoixEnnemi() > 3);
 
 
-
             Personnage ennemie = usine.unEnnemi(getChoixEnnemi());
-            //Boolean ennemiExist = ennemie != null ? true : false;
+            Boolean ennemiExist = ennemie != null ? true : false;
 
+            if (ennemiExist) {
+                getStat(ennemie);
+                while (ennemie.getHp() > 0) {
+                    checkNumber = false;
+                    do {
+                        if (checkNumber) System.out.println("Entrez un nombre entre un 1 et 5\n");
 
-            while (ennemie.getHp() > 0) {
-                checkNumber = false;
+                        System.out.println("\n1 : Attaque physique");
+                        System.out.println("2 : Attaquer avec La Force");
+                        System.out.println("3 : Attaquer avec votre arme");
+                        System.out.println("4 : Pour voir les stats de votre " + leJoueur.getClass().getName());
+                        System.out.println("5 : Pour voir les stats du " + ennemie.getName());
+                        System.out.print("Votre choix : ");
 
-                do {
-                    if (checkNumber) System.out.println("\nEntrez un nombre entre un 1 et 3\n");
+                        try {
+                            setChoixAttaque(getEntreStd().nextInt());
+                            checkNumber = true;
+                        } catch (InputMismatchException e) {
+                            System.out.println("Entrez un nombre entre un 1 et 5\n");
+                            getEntreStd().next();
+                            checkNumber = false;
+                        }
+                        if (getChoixAttaque() == 4) getStat(leJoueur);
+                        else if (getChoixAttaque() == 5) getStat(ennemie);
 
-                    System.out.println("1 : Attaque physique");
-                    System.out.println("2 : Attaquer avec La Force");
-                    System.out.println("3 : Attaquer avec votre arme");
-                    System.out.print("Votre choix : ");
+                    } while (getChoixAttaque() < 1 || getChoixAttaque() > 3);
 
-                    try {
-                        setChoixAttaque(getEntreStd().nextInt());
-                        checkNumber = true;
-                    } catch (InputMismatchException e) {
-                        System.out.println("\nEntrez un nombre entre un 1 et 3\n");
-                        getEntreStd().next();
-                        checkNumber = false;
+                    leJoueur.choixAttaque(getChoixAttaque(), getLeJoueur(), ennemie);
+
+                    if (ennemie.getHp() > 0) {
+                        Random rAttaque = new Random();
+                        Integer attaqueRandom;
+
+                        attaqueRandom = 1 + rAttaque.nextInt(3);
+                        ennemie.choixAttaque(attaqueRandom, ennemie, getLeJoueur());
                     }
 
-                } while (getChoixAttaque() < 1 || getChoixAttaque() > 3);
+                    if (leJoueur.getHp() <= 0) {
+                        System.out.println("Votre " + leJoueur.getClass().getName() + " est mort !!!\n");
+                        System.out.println("GAME OVER");
+                        System.exit(0);
+                        setGameOver(true);
+                    }
 
-                leJoueur.choixAttaque(getChoixAttaque(), getLeJoueur(), ennemie);
-
-                getStat(ennemie);
-
-
-
-                if (leJoueur.getHp() <= 0) setGameOver(true);
-
-                usine.getListEnnemis().get(getChoixAttaque()).remove(ennemie);
-
-                while (usine.getListEnnemis().isEmpty()) {
-                    room.setLvl(room.getLvl() + 1);
-                    room.creationSalle(usine);
-                    room.setListEnnemis(usine.getListEnnemis());
-                    System.out.println("Bienvenue dans la zone " + room.getLvl());
                 }
+                usine.destructionEnnemie(getLeJoueur(), ennemie, getChoixEnnemi());
             }
-
-
-
-
+            if (usine.getListEnnemis().get(1).isEmpty() && usine.getListEnnemis().get(2).isEmpty() && usine.getListEnnemis().get(3).isEmpty()) {
+                room.setLvl(room.getLvl() + 1);
+                room.creationSalle(usine);
+                room.setListEnnemis(usine.getListEnnemis());
+                System.out.println("Bienvenue dans la zone " + room.getLvl());
+            }
         }
+    }
+
+    public void quitter() {
+        System.out.println("\nVous avez fui le combat !");
+        System.exit(0);
     }
 
     public void getStat(Personnage perso) {
@@ -149,7 +168,7 @@ public class Jeu {
             setNomJoueur(getEntreStd().nextLine());
         }
 
-        System.out.println("Tapez 1 pour un Jedi");
+        System.out.println("\nTapez 1 pour un Jedi");
         System.out.println("Tapez 2 pour un Sith");
         System.out.println("Tapez 3 pour un BountyHunters");
         System.out.println("Tapez 4 pour un ImperialAgent");
@@ -199,6 +218,10 @@ public class Jeu {
         return choixAttaque;
     }
 
+    public Integer getVoirStats() {
+        return voirStats;
+    }
+
     public String getNomJoueur() {
         return nomJoueur;
     }
@@ -230,6 +253,10 @@ public class Jeu {
 
     public void setChoixAttaque(Integer choixAttaque) {
         this.choixAttaque = choixAttaque;
+    }
+
+    public void setVoirStats(Integer voirStats) {
+        this.voirStats = voirStats;
     }
 
     public void setNomJoueur(String nomJoueur) {

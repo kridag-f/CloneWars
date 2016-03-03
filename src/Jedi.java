@@ -15,10 +15,10 @@ public class Jedi extends Personnage {
 
     @Override
     public void physicalAttack(Personnage ennemy) {
-        Integer pointDegat = getPower() - (ennemy.getDef() / 2);
+        Integer pointDegat = getPower() - (ennemy.getDef() / 4);
         if (pointDegat < 0) pointDegat = 0;
         ennemy.setHp(ennemy.getHp() - pointDegat);
-        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
+        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!\n");
     }
 
     @Override
@@ -26,12 +26,12 @@ public class Jedi extends Personnage {
         Integer pointDegat = (getForce()/10)*4;
         if (pointDegat < 0) pointDegat = 0;
         ennemy.setHp(ennemy.getHp() - pointDegat);
-        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
+        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!\n");
     }
 
 
     @Override
     public void armedAttack(Personnage ennemy) {
-        System.out.println("Jeune Jedi tu possèdes la Force !");
+        System.out.println("\nJeune Jedi tu possèdes la Force !\n");
     }
 }

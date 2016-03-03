@@ -31,20 +31,21 @@ public abstract class Personnage {
         setName(null);
     }
 
-    public void lvlUp() {
+    public void lvlUp(Personnage hero, Boolean verifHero) {
         setHp((int) (getHp() * 1.5));
         setDef((int) (getDef() * 1.5));
         setForce((int) (getForce() * 1.5));
         setIntelligence((int) (getIntelligence() * 1.5));
         setLvl(getLvl() + 1);
         setPower((int) (getPower() * 1.5));
+        if (verifHero) System.out.println("Votre " + hero.getClass().getName() + " est passé au niveau " + getLvl());
     }
 
-    public void modifNiveau(Integer lvl) {
+    public void modifNiveau(Integer lvl, Personnage ennemy) {
         Integer i;
 
         for (i = 0; i < lvl; i++){
-            lvlUp();
+            lvlUp(ennemy, false);
         }
     }
 

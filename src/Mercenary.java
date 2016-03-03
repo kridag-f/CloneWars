@@ -17,18 +17,18 @@ public class Mercenary extends Personnage {
         Integer pointDegat = getPower() - (ennemy.getDef() / 2);
         if (pointDegat < 0) pointDegat = 0;
         ennemy.setHp(ennemy.getHp() - pointDegat);
-        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
+        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!\n");
     }
 
     public void forceAttack(Personnage ennemy) {
-        System.out.println("Jeune Mercenary tu ne possèdes pas la Force");
+        System.out.println("\nJeune Mercenary tu ne possèdes pas la Force\n");
     }
 
     public void armedAttack(Personnage ennemy) {
-        Integer pointDegat = getIntelligence() - (ennemy.getDef() / 2);
+        Integer pointDegat = getIntelligence() - (ennemy.getDef() / 4);
         if (pointDegat < 0) pointDegat = 0;
         ennemy.setHp(ennemy.getHp() - pointDegat);
-        System.out.println(getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
+        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!\n");
     }
 
 }

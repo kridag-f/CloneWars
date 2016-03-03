@@ -29,12 +29,15 @@ public class Usine {
         tabChoixEnnemi[2] = "Soldat";
         tabChoixEnnemi[3] = "Droid";
 
+
+        try {
             persoReturn = (Personnage) getListEnnemis().get(choixEnnemi).firstElement();
+        } catch (Exception e) {
+            System.out.println("\nVous avez éliminez tous les " + tabChoixEnnemi[choixEnnemi] + ", Champion !\n");
+        }
 
-            //System.out.println("Vous avez éliminez tous les " + tabChoixEnnemi[choixEnnemi] + ", Champion !");
 
-        if (persoReturn == null) System.out.println("Vous avez éliminez tous les " + tabChoixEnnemi[choixEnnemi] + ", Champion !");
-        System.out.println(getListEnnemis());
+
 
         return persoReturn;
     }
@@ -46,9 +49,9 @@ public class Usine {
 
         setNumZone(numZone);
 
-        Integer nbrCreerClone = getNumClone() + getNumZone();
-        Integer nbrCreerSoldat = getNumSoldat() + getNumZone();
-        Integer nbrCreerDroid = getNumDroid() + getNumZone();
+        Integer nbrCreerClone = getNumClone() + 1;
+        Integer nbrCreerSoldat = getNumSoldat() + 1;
+        Integer nbrCreerDroid = getNumDroid() + 1;
 
         for (i = 0; i < (nbrCreerClone); i++) { chqEnnemi.add(lvlEnnemi(getNumZone(), new Clone())); }
         getListEnnemis().put(1, chqEnnemi);
@@ -67,27 +70,30 @@ public class Usine {
 
     }
 
-    public Personnage lvlEnnemi(Integer numZone, Personnage perso){
+    public Personnage lvlEnnemi(Integer numZone, Personnage ennemy){
 
         Random rLvl = new Random();
         Integer lvlRandom;
 
         lvlRandom = (numZone - 1) + rLvl.nextInt((numZone + 2) - (numZone - 1));
-        perso.modifNiveau(lvlRandom);
+        ennemy.modifNiveau(lvlRandom, ennemy);
 
-        return perso;
+        return ennemy;
     }
 
     public void experience(Personnage hero, Personnage ennemy) {
         hero.setXp(hero.getXp() + (50 * ennemy.getLvl()));
         if (hero.getXp() >= (hero.getLvl() * 112)) {
             hero.setXp(hero.getXp() - (hero.getLvl() * 112));
-            hero.lvlUp();
+            hero.lvlUp(hero, true);
         }
     }
 
-    public void destructionEnnemie(Personnage ennemy, Integer choixEnnemy) {
+    public void destructionEnnemie(Personnage hero, Personnage ennemy, Integer choixEnnemy) {
         getListEnnemis().get(choixEnnemy).remove(ennemy);
+        System.out.println("\nLe " + ennemy.getName() + " a été détruit !");
+        experience(hero, ennemy);
+
     }
 
     // GETTEURS
