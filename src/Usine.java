@@ -29,16 +29,11 @@ public class Usine {
         tabChoixEnnemi[2] = "Soldat";
         tabChoixEnnemi[3] = "Droid";
 
-
         try {
             persoReturn = (Personnage) getListEnnemis().get(choixEnnemi).firstElement();
         } catch (Exception e) {
             System.out.println("\nVous avez éliminez tous les " + tabChoixEnnemi[choixEnnemi] + ", Champion !\n");
         }
-
-
-
-
         return persoReturn;
     }
 
