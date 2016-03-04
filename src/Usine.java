@@ -11,6 +11,7 @@ public class Usine {
     private Integer numSoldat;
     private Integer numDroid;
     private Integer numZone;
+    private Integer potionVitale;
     private static Usine instance = null;
 
     private Usine() {
@@ -18,6 +19,7 @@ public class Usine {
         setNumClone(2);
         setNumSoldat(1);
         setNumDroid(0);
+        setPotionVitale(3);
     }
 
     public Personnage unEnnemi(Integer choixEnnemi) {
@@ -91,6 +93,31 @@ public class Usine {
 
     }
 
+    public void boirePotionVitale(Personnage hero) {
+        Integer pvPotion;
+        pvPotion = hero.getHp() + (32 * getNumZone());
+        if (pvPotion > hero.getMaxHp()) pvPotion = hero.getMaxHp();
+        hero.setHp(pvPotion);
+        setPotionVitale(getPotionVitale() - 1);
+
+        System.out.println("\nVous buvez la potion...\n");
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
+        System.out.println("Vous gagnez " + 32 * getNumZone() + "HP");
+        System.out.println("Vous avez maintenant " + hero.getHp() + "HP");
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            System.out.println();
+        }
+
+    }
+
     // GETTEURS
     public Hashtable<Integer, Vector> getListEnnemis() {
         return listEnnemis;
@@ -110,6 +137,10 @@ public class Usine {
 
     public Integer getNumZone() {
         return numZone;
+    }
+
+    public Integer getPotionVitale() {
+        return potionVitale;
     }
 
     public static Usine getInstance() {
@@ -137,6 +168,10 @@ public class Usine {
 
     public void setNumZone(Integer numZone) {
         this.numZone = numZone;
+    }
+
+    public void setPotionVitale(Integer potionVitale) {
+        this.potionVitale = potionVitale;
     }
 }
 

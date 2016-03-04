@@ -13,6 +13,7 @@ public class Clone extends Personnage {
         setForce(0);
         setIntelligence(100);
         setName("Clone");
+        setMaxHp(getHp());
     }
 
     @Override
@@ -22,7 +23,7 @@ public class Clone extends Personnage {
         ennemy.setHp(ennemy.getHp() - pointDegat);
         System.out.println("C'est au tour du " + getName() + " d'attaquer");
         System.out.println(getName() + " a utilisé l'attaque physique !!");
-        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
+        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats à " + ennemy.getName() + " !!");
     }
 
     @Override
@@ -37,6 +38,6 @@ public class Clone extends Personnage {
         ennemy.setHp(ennemy.getHp() - pointDegat);
         System.out.println("C'est au tour du " + getName() + " d'attaquer");
         System.out.println(getName() + " a attaqué avec son arme !!");
-        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats au " + ennemy.getName() + " !!");
+        System.out.println("\n" + getName() + " a infligé : " + pointDegat + " dégats à " + ennemy.getName() + " !!");
     }
 }

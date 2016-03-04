@@ -12,6 +12,7 @@ public abstract class Personnage {
     private Integer lvl;
     private Integer xp;
     private String name;
+    private Integer maxHp;
 
     public Personnage() {
 
@@ -23,10 +24,12 @@ public abstract class Personnage {
         setPower(null);
         setXp(null);
         setName(null);
+        setMaxHp(null);
     }
 
     public void lvlUp(Personnage hero, Boolean verifHero) {
-        setHp((int) (getHp() * 1.5));
+        setHp((int) (getMaxHp() * 1.5));
+        setMaxHp(getHp());
         setDef((int) (getDef() * 1.5));
         setForce((int) (getForce() * 1.5));
         setIntelligence((int) (getIntelligence() * 1.5));
@@ -84,6 +87,10 @@ public abstract class Personnage {
         return name;
     }
 
+    public Integer getMaxHp() {
+        return maxHp;
+    }
+
     // SETTERS
     public void setDef(Integer def) {
         this.def = def;
@@ -115,6 +122,10 @@ public abstract class Personnage {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setMaxHp(Integer maxHp) {
+        this.maxHp = maxHp;
     }
 
     // ABSTRACT METHODS

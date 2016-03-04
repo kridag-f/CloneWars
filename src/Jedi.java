@@ -11,6 +11,8 @@ public class Jedi extends Personnage {
         setForce(200);
         setIntelligence(200);
         setName(name);
+        setMaxHp(getHp());
+
     }
 
     @Override

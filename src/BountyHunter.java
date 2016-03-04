@@ -11,6 +11,7 @@ public class BountyHunter extends Personnage {
         setForce(0);
         setIntelligence(100);
         setName(name);
+        setMaxHp(getHp());
     }
 
     public void physicalAttack(Personnage ennemy) {

@@ -11,6 +11,8 @@ public class Jawa extends Personnage {
         setXp(0);
         setIntelligence(400);
         setName(name);
+        setMaxHp(getHp());
+
     }
 
     public void physicalAttack(Personnage ennemy) {

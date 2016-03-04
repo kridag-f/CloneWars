@@ -11,6 +11,7 @@ public class Droid extends Personnage {
         setForce(0);
         setIntelligence(200);
         setName("Droid");
+        setMaxHp(getHp());
     }
 
     @Override

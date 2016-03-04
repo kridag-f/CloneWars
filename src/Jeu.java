@@ -58,7 +58,6 @@ public class Jeu {
                 while (ennemie.getHp() > 0) {
 
                     persoChoixAttaque(ennemie);
-                    leJoueur.choixAttaque(getChoixAttaque(), getLeJoueur(), ennemie);
 
                     if (ennemie.getHp() > 0) {
                         Random rAttaque = new Random();
@@ -95,22 +94,29 @@ public class Jeu {
 
     public void persoChoixEnnemie() {
         do {
-            if (checkNumber) System.out.println("\nEntrez un nombre entre un 1 et 4\n");
+            if (checkNumber) System.out.println("\nEntrez un nombre entre un 1 et 5\n");
             System.out.println("1 : Attaquer Clone");
             System.out.println("2 : Attaquer Soldat");
             System.out.println("3 : Attaquer Droid");
-            System.out.println("4 : Fuir");
+            System.out.println("4 : Boire une potion de vie");
+            System.out.println("5 : Fuir");
             System.out.print("Votre choix : ");
             try {
                 choixEnnemyAttaquer = getEntreStd().nextInt();
                 setChoixEnnemi(choixEnnemyAttaquer);
+                if (getChoixEnnemi() == 4 && usine.getPotionVitale() > 0) {
+                    if (leJoueur.getHp() < leJoueur.getMaxHp()) usine.boirePotionVitale(leJoueur);
+                    else System.out.println("\nVous avez l'hp au max");
+                }
+                if (usine.getPotionVitale() == 0) System.out.println("\nVous n'avez plus de potion de vie");
                 checkNumber = true;
             } catch (InputMismatchException e) {
-                System.out.println("\nVous devez entrer un nombre entre un 1 et 4\n");
+                System.out.println("\nVous devez entrer un nombre entre un 1 et 5\n");
                 getEntreStd().next();
                 checkNumber = false;
             }
-            if (getChoixEnnemi() == 4) quitter();
+
+            if (getChoixEnnemi() == 5) quitter();
 
         } while (getChoixEnnemi() < 1 || getChoixEnnemi() > 3);
     }
@@ -118,25 +124,33 @@ public class Jeu {
     public void persoChoixAttaque(Personnage ennemie) {
         checkNumber = false;
         do {
-            if (checkNumber) System.out.println("Entrez un nombre entre un 1 et 5\n");
+            if (checkNumber) System.out.println("\nEntrez un nombre entre un 1 et 6");
 
             System.out.println("\n1 : Attaque physique");
             System.out.println("2 : Attaquer avec La Force");
             System.out.println("3 : Attaquer avec votre arme");
-            System.out.println("4 : Pour voir les stats de votre " + leJoueur.getClass().getName());
-            System.out.println("5 : Pour voir les stats du " + ennemie.getName());
+            System.out.println("4 : Boire une potion de vie");
+            System.out.println("5 : Pour voir les stats de votre " + leJoueur.getClass().getName());
+            System.out.println("6 : Pour voir les stats du " + ennemie.getName());
             System.out.print("Votre choix : ");
 
             try {
                 setChoixAttaque(getEntreStd().nextInt());
                 checkNumber = true;
+                leJoueur.choixAttaque(getChoixAttaque(), getLeJoueur(), ennemie);
+                if (getChoixAttaque() == 4 && usine.getPotionVitale() > 0) {
+                    if (leJoueur.getHp() < leJoueur.getMaxHp()) usine.boirePotionVitale(leJoueur);
+                    else System.out.println("\nVous avez l'hp au max");
+
+                }
+                if (usine.getPotionVitale() == 0) System.out.println("\nVous n'avez plus de potion de vie");
             } catch (InputMismatchException e) {
-                System.out.println("Vous devez entrer un nombre entre un 1 et 5\n");
+                System.out.println("\nVous devez entrer un nombre entre un 1 et 6");
                 getEntreStd().next();
                 checkNumber = false;
             }
-            if (getChoixAttaque() == 4) getStat(leJoueur);
-            else if (getChoixAttaque() == 5) getStat(ennemie);
+            if (getChoixAttaque() == 5) getStat(leJoueur);
+            else if (getChoixAttaque() == 6) getStat(ennemie);
 
         } while (getChoixAttaque() < 1 || getChoixAttaque() > 3);
     }

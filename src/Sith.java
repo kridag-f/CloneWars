@@ -11,6 +11,8 @@ public class Sith extends Personnage {
         setXp(0);
         setIntelligence(200);
         setName(name);
+        setMaxHp(getHp());
+
     }
 
     @Override

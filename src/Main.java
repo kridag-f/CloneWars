@@ -8,9 +8,6 @@ public class Main {
         Jeu game = new Jeu();
         game.start();
 
-
     }
-
-
 
 }
