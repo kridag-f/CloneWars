@@ -157,7 +157,14 @@ public class Jeu {
 
     public void persoGameOver(Personnage ennemie) {
         System.out.println("\nVotre " + leJoueur.getClass().getName() + " est mort !!!\n");
-        System.out.println("GAME OVER\n");
+        System.out.println("   _____                       ____                 \n" +
+                "  / ____|                     / __ \\                \n" +
+                " | |  __  __ _ _ __ ___   ___| |  | |_   _____ _ __ \n" +
+                " | | |_ |/ _` | '_ ` _ \\ / _ \\ |  | \\ \\ / / _ \\ '__|\n" +
+                " | |__| | (_| | | | | | |  __/ |__| |\\ V /  __/ |   \n" +
+                "  \\_____|\\__,_|_| |_| |_|\\___|\\____/  \\_/ \\___|_|   \n" +
+                "                                                    \n" +
+                "                                                    ");
         checkNumber = false;
 
         do {
